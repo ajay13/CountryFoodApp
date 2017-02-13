@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="SpringApp">
+
+  <head>
+        <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="bowercomponents/bootstrap/dist/css/bootstrap.min.css" />
+
+        <script src="bowercomponents/jquery/dist/jquery.min.js"></script>
+        <script src="bowercomponents/bootstrap/dist/js/bootstrap.min.js"></script>
+       
+        <script src="bowercomponents/angularjs/angular.min.js"></script>
+        <script src="bowercomponents/esimakin-twbs-pagination/jquery.twbsPagination.min.js"></script>
+        <script
+        src="bowercomponents/angular-ui-router/release/angular-ui-router.min.js"></script>
+    
+        <script src="bowercomponents/sweet-alert/sweet-alert.js"></script>
+        <script src="bowercomponents/sweet-alert/SweetAlert.js"></script>
+        <script src="bowercomponents/bootstrap-toastr/toastr.min.js"></script>
+        <script src="js/sidebar.jsrtgrytyrt"></script>
+        <script src="app.js"></script>
+
+
+          <!-- user module-->
+     <script src="module/user/user.routers.js"></script>
+      <script src="module/user/controllers/user.ctrl.js"></script>
+      <script src="module/user/services/user.service.js"></script>
+      <script src="module/user/services/core.service.js"></script>
+      <script src="module/user/views/user.html"></script> 
+
+
+    <title>Country Food Admin</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="navbar-brand" ui-sref="home">CMS Portal</div>
+    </nav>
+
+
+  <div ui-view>
+  </div>
+    
+  </body> 
+
+
+</html>
