@@ -14,7 +14,9 @@ app.config(["$stateProvider",  "$urlRouterProvider", function($stateProvider, $u
     })
     .state('home', {
       url:'/home',
-      templateUrl: 'home.html'
+      templateUrl: 'home.html',
+      controller: 'MainCtrl',
+      controllerAs: 'main'
     });
 
 }]);
