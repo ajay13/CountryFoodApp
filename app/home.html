@@ -1,186 +1,44 @@
-
-
 <!DOCTYPE html>
-
-<html>
-
-<body>
-
-<div style="display: flex;">
-<div>
-<iui-menu name="{{menuName}}" items="data" item-icon="defaultIcon" display-mode="vertical" open-on-hover="true" rtl="rtl">
-</iui-menu>
-</div>
-
-<div style="width: 85%; ">
-
-</div>
-
-</div>
-
-</body>
-<style type="text/css">
-	
-.icons-medium
-
-{
-
-background-image: url(../resources/icons-x24.png);
-
-background-repeat: no-repeat;
-
-display: inline-block;
-
-overflow: hidden;
-
-padding: 0 !important;
-
-margin: 0;
-
-width: 24px;
-
-height: 24px;
-
-vertical-align: middle;
-
-}
-
-.library
-
-{
-
-background-position: 0 -72px;
-
-}
-
-.economics
-
-{
-
-background-position: -24px -72px;
-
-}
-
-.software
-
-{
-
-background-position: -48px -72px;
-
-}
-
-.sports
-
-{
-
-background-position: -96px -72px;
-
-}
-
-.people
-
-{
-
-background-position: -120px -72px;
-
-}
-
-.heart
-
-{
-
-background-position: -168px -72px;
-
-}
-
-.album
-
-{
-
-background-position: -144px -48px;
-
-}
-
-.camera
-
-{
-
-background-position: -168px -48px;
-
-}
-
-.clock-full
-
-{
-
-background-position: -192px -96px;
-
-}
-
- 
-
-/* Vertical Menu Directive Settings */
-
-.iui-menu-block
-
-{
-
-padding: 5px;
-
-cursor: pointer;
-
-width: 200px;
-
-}
-
-.iui-menu-item-root-vertical
-
-{
-
-border-bottom: thin solid #6080aa;
-
-margin: 0;
-
-padding: 6px 3px;
-
-}
-
-.iui-menu-item-root-vertical:last-child
-
-{
-
-border-bottom: thin solid transparent;
-
-}
-
-.iui-menu-item-root-hovered
-
-{
-
-border: thin solid transparent;
-
-border-bottom: thin solid #6080aa;
-
-border-radius: 0;
-
-}
-
-.iui-menu-item-root-content, .iui-menu-item-content
-
-{
-
-margin: 0 7px;
-
-}
-
-.iui-menu-item
-
-{
-
-width: 200px;
-
-}
-
-
-</style>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/jquery.multilevelpushmenu.css">
+        <link rel="stylesheet" href="css/basichtml.css">
+        <script type="text/javascript" src="http://oss.maxcdn.com/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    </head>
+    <body>
+        <div id="menu" style="float: left;">
+            <nav>
+                <h2><i class="fa fa-reorder" style="margin-right: 10px;"></i>All Categories</h2>
+                <ul>
+                    <li>
+                        <a ui-sref="cooks"><i class="fa fa-laptop"></i>Cooks</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-book"></i>Catagories</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-shopping-cart"></i>Menu</a>
+                    </li>  
+                </ul>   
+            </nav>
+        </div>
+
+        <div ui-view style="color: white;"> 
+        </div>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/jquery.multilevelpushmenu.min.js"></script>
+        <script type="text/javascript" src="js/basichtml.js"></script>
+    </body>
 </html>

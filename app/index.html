@@ -32,27 +32,36 @@
 
 
           <!-- user module-->
-     <script src="module/user/user.routers.js"></script>
+      <script src="module/user/user.routers.js"></script>
       <script src="module/user/controllers/user.ctrl.js"></script>
       <script src="module/user/controllers/main.ctrl.js"></script>
       <script src="module/user/services/user.service.js"></script>
       <script src="module/user/services/core.service.js"></script>
       <script src="module/user/views/user.html"></script> 
 
+    <!-- cook module-->
+      <script src="module/cook/cook.routers.js"></script>
+      <script src="module/cook/controllers/cook.ctrl.js"></script>
+      <script src="module/cook/services/cook.service.js"></script>
+      <script src="module/cook/views/cook.html"></script> 
+
 
     <title>Country Food Admin</title>
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse">
+    
+
+  <div>
+    <nav class="navbar navbar-inverse" style="background-color: #336ca6;">
       <div class="navbar-brand" ui-sref="home">CMS Portal</div>
     </nav>
+  </div>
 
-
-  <div ui-view>
+  <div ui-view style="color: white;">
   </div>
     
-  </body> 
+  </body>
 
 
 </html>

@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('com.module.user')
-    .controller('MainCtrl', MainCtrl);
+angular.module('com.module.cook')
+    .controller('CookCtrl', CookCtrl);
 
-MainCtrl.$inject = ["$scope", "UserService", "CoreService"];
+CookCtrl.$inject = ["$scope", "UserService", "CoreService"];
 
-function MainCtrl($scope, UserService, CoreService) {
+function CookCtrl($scope, UserService, CoreService) {
 
 $scope.menuName = "menuSample";
 $scope.defaultIcon = 'icons-medium empty';

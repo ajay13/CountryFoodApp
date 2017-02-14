@@ -6,7 +6,6 @@ app.config(["$stateProvider",  "$urlRouterProvider", function($stateProvider, $u
 
 	 $urlRouterProvider.otherwise('/');
 
-/*module/user/views/user.html*/
     $stateProvider
     .state('login', {
       url:'/',
