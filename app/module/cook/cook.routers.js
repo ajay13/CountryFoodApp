@@ -7,9 +7,11 @@ app.config(["$stateProvider",  "$urlRouterProvider", function($stateProvider, $u
 	 /*$urlRouterProvider.otherwise('/');*/
 
     $stateProvider
-    .state('cooks', {
-      url:'/cooks',
-      templateUrl: 'module/cook/views/cook.html'
-    });
+    .state('cook', {
+      url:'/',
+      templateUrl: 'module/cook/views/cook.html',
+      controller: 'CookCtrl',
+      controllerAs: 'cook'
+    })
 
 }]);

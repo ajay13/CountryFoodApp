@@ -3,19 +3,32 @@
 angular.module('com.module.cook')
     .controller('CookCtrl', CookCtrl);
 
-CookCtrl.$inject = ["$scope", "UserService", "CoreService"];
+CookCtrl.$inject = ["$scope", "CookService", "CoreService"];
 
-function CookCtrl($scope, UserService, CoreService) {
+function CookCtrl($scope, CookService, CoreService) {
+  var cook = this;
+  cook.info =  {};
+  cook.info.name = "";
+  cook.info.description = "";
+  cook.info.gender = "";
+  cook.info.mobileNo = "";
+  cook.info.address = "";
+  cook.info.specility = "";
 
-$scope.menuName = "menuSample";
-$scope.defaultIcon = 'icons-medium empty';
-$scope.rtl = false;
-$scope.data = 
-        [
-           {id: 1,text: "Cooks",icon: "icons-medium library"},	
-           {id: 2,text: "Menu Catagory",icon: "icons-medium library"},
-           {id: 3,text: "Menu",icon: "icons-medium library"},
-           {id: 4,text: "special Item",icon: "icons-medium library"}
-        ];
+
+  cook.cookList = {};
+
+
+  cook.add = add;
+  function add() {
+        /*UserService.add($scope.object).success(function (data, status, headers) {
+            $scope.get($scope.currentpage);
+            toastr.success("User successfully added.", '', {timeOut: 5000});
+            $scope.clear();
+        }).error(function (error) {
+                console.log("user:" + error.message);
+            });*/
+            console.log("14465156454");
+    };
 
 }

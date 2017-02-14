@@ -2,32 +2,38 @@
 <html ng-app="SpringApp">
 
   <head>
-        <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="bowercomponents/bootstrap/dist/css/bootstrap.min.css" />
+
+        <link rel="stylesheet"
+          href="bowercomponents/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet"
+          href="bowercomponents/bootstrap/dist/css/bootstrap-theme.min.css">
+        <link rel="stylesheet"
+          href="bowercomponents/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet"
+          href="bowercomponents/sweet-alert/sweet-alert.css">
+        <link rel="stylesheet"
+          href="bowercomponents/bootstrap-toastr/toastr.min.css">
+
+        <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'> -->
+        <link rel="stylesheet" href="css/jquery.multilevelpushmenu.css">
+        <link rel="stylesheet" href="css/basichtml.css">
 
         <script src="bowercomponents/jquery/dist/jquery.min.js"></script>
         <script src="bowercomponents/bootstrap/dist/js/bootstrap.min.js"></script>
-       
         <script src="bowercomponents/angularjs/angular.min.js"></script>
-        <script src="bowercomponents/esimakin-twbs-pagination/jquery.twbsPagination.min.js"></script>
+        <!-- <script src="bowercomponents/esimakin-twbs-pagination/jquery.twbsPagination.min.js"></script> -->
         <script
         src="bowercomponents/angular-ui-router/release/angular-ui-router.min.js"></script>
-    
         <script src="bowercomponents/sweet-alert/sweet-alert.js"></script>
         <script src="bowercomponents/sweet-alert/SweetAlert.js"></script>
         <script src="bowercomponents/bootstrap-toastr/toastr.min.js"></script>
-
-
-        <link rel="stylesheet" href="css/integralui.css" />
-
-        <link rel="stylesheet" href="css/integralui.menu.css" />
-
-        <link rel="stylesheet" href="css/themes/theme-office365.css" />
-
         <script type="text/javascript" src="js/angular.integralui.min.js"></script>
+        <!-- <script type="text/javascript" src="js/angular.integralui.menu.min.js"></script> -->
 
-        <script type="text/javascript" src="js/angular.integralui.menu.min.js"></script>
-
-
+        <script type="text/javascript" src="http://oss.maxcdn.com/libs/modernizr/2.6.2/modernizr.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/jquery.multilevelpushmenu.min.js"></script>
+        <script type="text/javascript" src="js/basichtml.js"></script>
         <script src="app.js"></script>
 
 
@@ -39,7 +45,7 @@
       <script src="module/user/services/core.service.js"></script>
       <script src="module/user/views/user.html"></script> 
 
-    <!-- cook module-->
+        <!-- cook module-->
       <script src="module/cook/cook.routers.js"></script>
       <script src="module/cook/controllers/cook.ctrl.js"></script>
       <script src="module/cook/services/cook.service.js"></script>
@@ -49,18 +55,46 @@
     <title>Country Food Admin</title>
   </head>
 
-  <body>
+  <body class="container-fluid" >
     
 
   <div>
-    <nav class="navbar navbar-inverse" style="background-color: #336ca6;">
+    <nav class="navbar navbar-inverse">
       <div class="navbar-brand" ui-sref="home">CMS Portal</div>
     </nav>
   </div>
 
-  <div ui-view style="color: white;">
-  </div>
+
+   <div >
+      <div id="menu" style="float: left;width: 20%;">
+            <nav>
+                <h2><i class="fa fa-reorder"></i>All Categories</h2>
+                <ul>
+                    <li>
+                        <a ui-sref="cooks"><i class="fa fa-laptop"></i>Cooks</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-book"></i>Catagories</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-shopping-cart"></i>Menu</a>
+                    </li>  
+                </ul>   
+            </nav>
+    </div>
+
+
+  <div ui-view style="color: white;" class="col-xs-10"> </div>
+   </div>
     
+    <div id="info" class="row" style="color: white;">
+      <div class="col-xs-12">
+        <footer>
+          <p>&copy; Copyright 2016</p>
+        </footer>
+      </div>
+    </div>
+
   </body>
 
 

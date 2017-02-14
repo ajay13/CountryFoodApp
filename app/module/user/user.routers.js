@@ -6,16 +6,16 @@ app.config(["$stateProvider",  "$urlRouterProvider", function($stateProvider, $u
 
 	 $urlRouterProvider.otherwise('/');
 
-    $stateProvider
-    .state('login', {
+   /* $stateProvider
+    .state('cook', {
       url:'/',
-      templateUrl: 'login.html'
-    })
-    .state('home', {
+      templateUrl: 'module/cook/views/cook.html'
+    })*/
+    /*.state('home', {
       url:'/home',
       templateUrl: 'home.html',
       controller: 'MainCtrl',
       controllerAs: 'main'
-    });
+    })*/;
 
 }]);
