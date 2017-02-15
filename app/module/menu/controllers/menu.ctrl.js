@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('com.module.cook')
-    .controller('CookCtrl', CookCtrl);
+angular.module('com.module.menu')
+    .controller('MenuCtrl', MenuCtrl);
 
-CookCtrl.$inject = ["$scope", "CookService", "CoreService"];
+MenuCtrl.$inject = ["$scope", "CookService", "CoreService"];
 
-function CookCtrl($scope, CookService, CoreService) {
+function MenuCtrl($scope, CookService, CoreService,fileUpload) {
   var cook = this;
   cook.info =  {};
   cook.info.name = "";
@@ -30,5 +30,15 @@ function CookCtrl($scope, CookService, CoreService) {
             });
           //  console.info(cook.info);
     };
+
+
+      $scope.uploadFile = function(){
+        var file = $scope.myFile;
+        console.log('file is ' );
+        console.dir(file);
+        var uploadUrl = "/fileUpload";
+        fileUpload.uploadFileToUrl(file, uploadUrl);
+    };
+    
 
 }

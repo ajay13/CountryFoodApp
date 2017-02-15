@@ -12,6 +12,6 @@ app.config(["$stateProvider",  "$urlRouterProvider", function($stateProvider, $u
       templateUrl: 'module/cook/views/cook.html',
       controller: 'CookCtrl',
       controllerAs: 'cook'
-    })
+    });
 
 }]);

@@ -51,6 +51,19 @@
       <script src="module/cook/services/cook.service.js"></script>
       <script src="module/cook/views/cook.html"></script> 
 
+      <!-- catagory module-->
+      <script src="module/catagory/catagory.routers.js"></script>
+      <script src="module/catagory/controllers/catagory.ctrl.js"></script>
+      <script src="module/catagory/services/catagory.service.js"></script>
+      <script src="module/catagory/views/catagory.html"></script> 
+
+      <!-- menu module-->
+      <script src="module/menu/menu.routers.js"></script>
+      <script src="module/menu/controllers/menu.ctrl.js"></script>
+      <script src="module/menu/services/menu.service.js"></script>
+      <script src="module/menu/views/menu.html"></script> 
+      <script src="module/menu/directive/menu.directive.js"></script> 
+
 
     <title>Country Food Admin</title>
   </head>
@@ -71,20 +84,20 @@
                 <h2><i class="fa fa-reorder"></i>All Categories</h2>
                 <ul>
                     <li>
-                        <a ui-sref="cooks"><i class="fa fa-laptop"></i>Cooks</a>
+                        <a ui-sref="cook"><i class="fa fa-laptop"></i>Cooks</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-book"></i>Catagories</a>
+                        <a ui-sref="catagory"><i class="fa fa-book"></i>Catagories</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-shopping-cart"></i>Menu</a>
+                        <a ui-sref="menu"><i class="fa fa-shopping-cart"></i>Menu</a>
                     </li>  
                 </ul>   
             </nav>
     </div>
 
 
-  <div ui-view style="color: white;" class="col-xs-10"> </div>
+    <div ui-view style="color: white;" class="col-xs-10"> </div>
    </div>
     
     <div id="info" class="row" style="color: white;">

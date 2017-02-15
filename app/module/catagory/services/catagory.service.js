@@ -1,8 +1,8 @@
 'use strict';
 
-var app = angular.module('com.module.cook');
+var app = angular.module('com.module.catagory');
 
-app.service('CookService', ["$http", "$q", function ($http, $q) {
+app.service('CatagoryService', ["$http", "$q", function ($http, $q) {
 
     //var userURL = 'rest/user';
     var userURL = 'https://countryfood.cfapps.io/cms/cooks';

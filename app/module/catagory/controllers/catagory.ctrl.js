@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('com.module.cook')
-    .controller('CookCtrl', CookCtrl);
+angular.module('com.module.catagory')
+    .controller('CatagoryCtrl', CatagoryCtrl);
 
-CookCtrl.$inject = ["$scope", "CookService", "CoreService"];
+CatagoryCtrl.$inject = ["$scope", "CookService", "CoreService"];
 
-function CookCtrl($scope, CookService, CoreService) {
+function CatagoryCtrl($scope, CookService, CoreService) {
   var cook = this;
   cook.info =  {};
   cook.info.name = "";
