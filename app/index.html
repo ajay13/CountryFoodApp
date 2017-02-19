@@ -5,8 +5,8 @@
 
         <link rel="stylesheet"
           href="bowercomponents/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet"
-          href="bowercomponents/bootstrap/dist/css/bootstrap-theme.min.css">
+        <!-- <link rel="stylesheet"
+          href="bowercomponents/bootstrap/dist/css/bootstrap-theme.min.css"> -->
         <link rel="stylesheet"
           href="bowercomponents/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet"
@@ -14,9 +14,11 @@
         <link rel="stylesheet"
           href="bowercomponents/bootstrap-toastr/toastr.min.css">
 
-        <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'> -->
+       <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&subset=latin,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/jquery.multilevelpushmenu.css">
         <link rel="stylesheet" href="css/basichtml.css">
+       <link rel="stylesheet" href="css/autocomplete.css"> 
+        <!--  <link rel="stylesheet" href="css/simple-autocomplete.css">-->
 
         <script src="bowercomponents/jquery/dist/jquery.min.js"></script>
         <script src="bowercomponents/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -30,15 +32,23 @@
         <script type="text/javascript" src="js/angular.integralui.min.js"></script>
         <!-- <script type="text/javascript" src="js/angular.integralui.menu.min.js"></script> -->
 
-        <script type="text/javascript" src="http://oss.maxcdn.com/libs/modernizr/2.6.2/modernizr.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="http://oss.maxcdn.com/libs/modernizr/2.6.2/modernizr.min.js"></script> -->
+        <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+        <script src="bowercomponents/jquery/dist/jquery.min.js"></script>
         <script src="js/jquery.multilevelpushmenu.min.js"></script>
         <script type="text/javascript" src="js/basichtml.js"></script>
         <script src="app.js"></script>
 
 
       <script src="bowercomponents/esimakin-twbs-pagination/jquery.twbsPagination.min.js"></script> 
+     <script type="text/javascript" src="js/autocomplete.js"></script> 
       
+
+      
+      <!-- <script type="text/javascript" src="js/simple-autocomplete.js"></script> -->
+
+
+
           <!-- user module-->
       <script src="module/user/user.routers.js"></script>
       <script src="module/user/controllers/user.ctrl.js"></script>
@@ -73,17 +83,17 @@
   <body class="container-fluid" >
     
 
-  <div>
+  <!-- <div>
     <nav class="navbar navbar-inverse">
       <div class="navbar-brand" ui-sref="home">CMS Portal</div>
     </nav>
-  </div>
+  </div> -->
 
 
-   <div >
+   <div>
       <div id="menu" style="float: left;width: 20%;">
             <nav>
-                <h2><i class="fa fa-reorder"></i>All Categories</h2>
+                <h2><i class="fa fa-reorder"></i>CMS Options</h2>
                 <ul>
                     <li>
                         <a ui-sref="cook"><i class="fa fa-laptop"></i>Cooks</a>
@@ -99,13 +109,13 @@
     </div>
 
 
-    <div ui-view style="color: white;" class="col-xs-10"> </div>
+    <div ui-view style="color: white; margin-top: 20px;" class="col-xs-10" > </div>
    </div>
     
-    <div id="info" class="row" style="color: white;">
+    <div id="info" class="row" >
       <div class="col-xs-12">
         <footer>
-          <p>&copy; Copyright 2016</p>
+          <p>&copy; CountryFood Copyright 2017</p>
         </footer>
       </div>
     </div>

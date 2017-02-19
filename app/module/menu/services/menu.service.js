@@ -1,39 +1,36 @@
 'use strict';
 
-var app = angular.module('com.module.menu');
+var app = angular.module('com.module.cook');
 
-app.service('MenuService',["$http", "$q", function ($http, $q) {
-
-    //var userURL = 'rest/user';
-    var userURL = 'https://countryfood.cfapps.io/cms/cooks';
+app.service('MenuService', ["$http", "$q", function ($http, $q) {
     
-    this.add = function (cook) {
-        return $http.post(userURL + '/add',cook);
+    var menuURL = "http://localhost:8080/SpringRestSecurityOauth/cms/menu";
+
+    this.addMenu = function (menu) {
+        return $http.post(menuURL + '/add',menu);
     };
 
-    this.uploadFileToUrl = function(file, uploadUrl){
+
+    this.uploadFileWithMenu = function(file, menuId){
         var fd = new FormData();
         fd.append('file', file);
-        $http.post(uploadUrl, fd, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        })
+        fd.append("menuid", menuId);
+        $http.post(menuURL+ '/fileupload', fd,{
+          withCredentials : false,
+          headers : {
+          'Content-Type' : undefined
+          },
+          transformRequest : angular.identity
+         })
         .success(function(){
         })
         .error(function(){
         });
     };
+ 
 
-    /* this.get = function () {
-        return $http.get(userURL + '/userlist?pageno=');
+    this.getMenuList = function (pageno,cookId,catagoryId) {
+        return $http.get(menuURL + '/menuList?pageno='+pageno+'&cookId='+cookId+'&catagoryId='+catagoryId);
     };
-
-     this.edit = function (user) {
-        return $http.post(userURL + '/edit',user);
-    };
-
-      this.delete = function (id) {
-        return $http.post(userURL + '/delete?id='+id);
-    };*/
 
 }]);
