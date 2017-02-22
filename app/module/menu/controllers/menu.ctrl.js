@@ -9,6 +9,9 @@ function MenuCtrl($scope, CookService, CatagoryService,MenuService,CoreService,f
 
 
 var menu = this;
+
+menu.editedMenu = {};
+
 menu.cookInfo =  [];
 menu.catagoryInfo = [];
 menu.selectedCookId = "";
@@ -22,12 +25,14 @@ menu.catagorySelect = catagorySelect;
 menu.getMenu = getMenu;
 menu.add = add;
 menu.editMenu = editMenu;
+menu.update = update;
+menu.deleteMenu = deleteMenu;
+menu.cleanAddMenu = cleanAddMenu;
+
 
 menu.searchOption = {};
 menu.searchOption.cookId = "";
 menu.searchOption.catagoryId = "";
-
-menu.editedMenu = {};
 
 menu.addMenu = {};
 menu.addMenu.cooksId = "";
@@ -66,8 +71,9 @@ function searchCatagory(typed) {
 }
 
 function getMenu(){
+  console.log(menu.currentpage+","+menu.selectedCookId+","+menu.selectedCatagoryId);
   $scope.paggination = [];
-   MenuService.getMenuList(1,menu.selectedCookId, menu.selectedCatagoryId).success(function (data, status, headers) {
+   MenuService.getMenuList(menu.currentpage,menu.selectedCookId, menu.selectedCatagoryId).success(function (data, status, headers) {
 
             menu.menuList  = data.cmsMenuBeanList;
             $scope.paggination = data.count;
@@ -98,17 +104,63 @@ function getMenu(){
         var file = $scope.myFile;
         MenuService.addMenu(menu.addMenu).success(function (data, status, headers) {
             toastr.success("Menu successfully added.", '', {timeOut: 5000});
-            MenuService.uploadFileWithMenu(file,data);
+            if (typeof file != 'undefined'){
+              MenuService.uploadFileWithMenu(file,data);  
+            }
+            menu.getMenu();
+            menu.cleanAddMenu();
         }).error(function (error) {
                 console.log("user:" + error.message);
             });
     };
 
 
-    function editMenu(menu){
-        var obj = angular.copy(menu);
+    function editMenu(tempMenu){
+        menu.editedMenu = {};
+        var obj = angular.copy(tempMenu);
         menu.editedMenu = obj;
-        console.info(menu.editedMenu);
     }
+
+     function update() {
+
+     menu.editedMenu.cooksId = menu.selectedCookId;
+     menu.editedMenu.menuCatagoryId = menu.selectedCatagoryId;
+
+        var file = $scope.myFile;
+
+      MenuService.updateMenu(menu.editedMenu).success(function (data, status, headers) {
+            toastr.success("Menu successfully updated.", '', {timeOut: 5000});
+            if (typeof file != 'undefined'){
+              MenuService.uploadFileWithMenu(file,data);  
+            }
+            menu.getMenu();
+        }).error(function (error) {
+                console.log("user:" + error.message);
+            });
+    };
+
+     function deleteMenu(id) {
+
+        CoreService.confirmation('Are you sure?', 'Delete cannot be undone.', function () {
+            MenuService.delete(id).success(function (data, status, headers) {
+                menu.getMenu();
+                toastr.success("Menu successfully deleted.", '', {timeOut: 5000});
+            }).error(function (error) {
+                    console.log("user:" + error.message);
+                });
+        }, function () {
+            return false;
+        });
+    };
+
+
+   function cleanAddMenu(){
+    menu.addMenu = {};
+    menu.addMenu.cooksId = "";
+    menu.addMenu.menuCatagoryId = "";
+    menu.addMenu.itemName = "";
+    menu.addMenu.description = "";
+    menu.addMenu.price = "";
+   }
 
 }

@@ -64,8 +64,8 @@
 									ng-click="menu.editMenu(menu1);"
 									data-toggle="modal" data-target="#editmodel"> <i
 										class="fa fa-edit"></i></a>
-							</span> <span> <a href="#!/settings/template"
-									ng-click="delete(cook.id);"> <i
+							</span> <span> <a href=""
+									ng-click="menu.deleteMenu(menu1.id);"> <i
 										class="fa fa-times" aria-hidden="true"></i></a>
 							</span></td>
 						</tr>
@@ -124,7 +124,6 @@
 		<!-- Edit Modal -->
 	<div class="modal fade" id="editmodel" role="dialog" style="color: black;">
 		<div class="modal-dialog">
-{{menu.editedMenu}}
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
@@ -156,7 +155,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear();">Close</button>
 					<button type="button" data-dismiss="modal" class="btn btn-default"
-						ng-click="menu.add();">Update</button>
+						ng-click="menu.update();">Update</button>
 				</div>
 			</div>
 

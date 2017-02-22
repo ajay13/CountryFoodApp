@@ -6,6 +6,8 @@ app.service('CookService', ["$http", "$q", function ($http, $q) {
     
     var cookURL = "http://localhost:8080/SpringRestSecurityOauth/cms/cooks";
 
+   // var cookURL = "http://countryfood.cfapps.io/cms/cooks";
+
     this.add = function (cook) {
         return $http.post(cookURL + '/add',cook);
     };

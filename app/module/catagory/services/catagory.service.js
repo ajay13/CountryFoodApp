@@ -4,7 +4,9 @@ var app = angular.module('com.module.catagory');
 
 app.service('CatagoryService', ["$http", "$q", function ($http, $q) {
 
-    var catagoryURL = "http://localhost:8080/SpringRestSecurityOauth/cms/menucatagory";
+   var catagoryURL = "http://localhost:8080/SpringRestSecurityOauth/cms/menucatagory";
+
+    //var catagoryURL = "http://countryfood.cfapps.io/cms/menucatagory";
 
     this.add = function (catagory) {
         return $http.post(catagoryURL + '/add',catagory);
