@@ -10,12 +10,19 @@
 		<div class="row" style="margin-top: 10px;">
 			<div class="col-xs-12">
 				<button type="button" class="btn btn-primary pull-right"
-					data-toggle="modal" data-target="#myModal">
+					data-toggle="modal" data-target="#myModal" style="margin: 5px;">
 					<span style="padding-right: 2px;">Add</span><i class="fa fa-plus"
+						aria-hidden="true"></i>
+				</button>
+				<button type="button" class="btn btn-primary pull-right"
+					data-toggle="modal" data-target="#groupModal" style="margin: 5px;">
+					<span style="padding-right: 2px;">Groupping / sequencing</span><i class="fa fa-plus"
 						aria-hidden="true"></i>
 				</button>
 			</div>
 		</div> 
+
+
 		<div class="portlet-body" style="background-color: none;"> 
 			<div style="margin-top: 10px;">
 				<table class="table  table-bordered">
@@ -118,6 +125,39 @@
 		</div>
 	</div>
 
+			<!-- groupModal Modal -->
+	<div class="modal fade" id="groupModal" role="dialog" style="color: black;">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Add catagory</h4>
+				</div>
+				<div class="modal-body">
+                    <div class="form-group">
+						
+
+<div >
+  <multi-select ng-model="user.roles" available="roles" selected-label="Catagory" available-label="Groupped Catagory" display-attr="roleName"></multi-select>
+    <div>{{ user.username }}'s roles: </div>
+    <ul>
+        <li ng-repeat="role in user.roles">{{ role.roleName }}</li>
+    </ul>           
+</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear();">Close</button>
+					<button type="button" data-dismiss="modal" class="btn btn-default"
+						ng-click="catagory.add();">Add</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
 </body>
 
 
@@ -125,13 +165,50 @@
 
 
 <style>
-#info {
+/*#info {
     height: 25px;
     position: fixed;
     bottom:0%;
     width:100%;
     background-color: whitesmoke;
     opacity: 1;
+}
+*/
+
+.multiSelect {
+    overflow: auto;
+}
+.multiSelect .select {
+    margin-right: 20px;
+    float: left;
+}
+.multiSelect .text {
+    clear: both;
+    font-size: 11px;
+}
+.multiSelect label::after {
+    content: ":";
+}
+.btn.mover {
+    display: block;
+    margin-top: 25px;
+    vertical-align: top;
+}
+.btn.mover.left {
+    padding: 3px 8px 2px 6px;
+}
+.btn.mover.right {
+    margin-top: 24px;
+    padding: 3px 7px 2px;
+}
+.btn.mover i {
+    margin: 0;
+}
+
+/* demo css */
+li {
+    list-style-type: disc;
+}
 }
 
 </style>

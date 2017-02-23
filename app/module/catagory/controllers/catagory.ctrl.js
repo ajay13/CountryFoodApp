@@ -25,6 +25,18 @@ function CatagoryCtrl($scope, CatagoryService, CoreService) {
   catagory.SearchTag = SearchTag;
   catagory.deletecatagory = deletecatagory;
   
+
+ $scope.roles = [
+        {roleId: 1, roleName: "Administrator"},
+        {roleId: 2, roleName: "Super User"}
+    ];
+    
+    $scope.user = {
+        userId: 1, 
+        username: "JimBob",
+        roles: [$scope.roles[0]]
+    };
+  
   catagory.get(catagory.currentpage);
 
   function add() {
