@@ -11,6 +11,10 @@ function CatagoryCtrl($scope, CatagoryService, CoreService) {
   catagory.info.name = "";
   catagory.info.description = "";
 
+  catagory.groupingAndSeq = {};
+  catagory.groupingAndSeq.ids = [];
+  catagory.groupingAndSeq.groupName = "";
+
   catagory.catagoryList = {};
 
   catagory.editInfo =  {};
@@ -24,20 +28,19 @@ function CatagoryCtrl($scope, CatagoryService, CoreService) {
   catagory.getEditcatagory = getEditcatagory;
   catagory.SearchTag = SearchTag;
   catagory.deletecatagory = deletecatagory;
-  
+  catagory.getAllCatagory = getAllCatagory;
+  catagory.showGroupAndSeq = showGroupAndSeq;
+  catagory.doneGroupingAndSequencing = doneGroupingAndSequencing;
+  catagory.getGroupingId = getGroupingId;
+  catagory.clearGroupingAndSeq = clearGroupingAndSeq;
 
- $scope.roles = [
-        {roleId: 1, roleName: "Administrator"},
-        {roleId: 2, roleName: "Super User"}
-    ];
-    
-    $scope.user = {
-        userId: 1, 
-        username: "JimBob",
-        roles: [$scope.roles[0]]
-    };
-  
   catagory.get(catagory.currentpage);
+  catagory.getAllCatagory();
+
+
+
+$scope.optionsList = [];
+
 
   function add() {
         CatagoryService.add(catagory.info).success(function (data, status, headers) {
@@ -123,4 +126,52 @@ function CatagoryCtrl($scope, CatagoryService, CoreService) {
       catagory.info.name = "";
       catagory.info.description = "";
     };
+
+
+    function getAllCatagory(){
+      CatagoryService.getAllCatagory().success(function (data, status, headers) {
+          $scope.optionsList = data;
+          catagory.showGroupAndSeq(data);
+        }).error(function (error) {
+                console.log("user:" + error.message);
+            });
+    }
+
+
+   function showGroupAndSeq(catagories){
+     angular.forEach(catagories, function(value, key) {
+          if(value.groupName!=null)  {
+             value.name = value.name +" group-> "+value.groupName+" seq-> "+value.sequence;  
+          }
+      });
+   }
+
+   function doneGroupingAndSequencing(){
+      catagory.groupingAndSeq.ids = catagory.getGroupingId($scope.selectedList);
+      //console.log(catagory.groupingAndSeq);
+      
+       CatagoryService.groupingAndSeq(catagory.groupingAndSeq).success(function (data, status, headers) {
+         
+        }).error(function (error) {
+                console.log("doneGroupingAndSequencing:" + error.message);
+            });
+
+      catagory.clearGroupingAndSeq();
+   }
+
+   function getGroupingId(data){
+     var ids = [];
+     angular.forEach(data, function(value, key) {
+         ids.push(value.id);
+      });
+
+     return ids;
+   }
+
+   function clearGroupingAndSeq(){
+       catagory.groupingAndSeq = {};
+       catagory.groupingAndSeq.ids = [];
+       catagory.groupingAndSeq.groupName = "";
+       $scope.selectedList=[];
+   }
 }

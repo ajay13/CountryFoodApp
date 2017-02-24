@@ -27,5 +27,12 @@ app.service('CatagoryService', ["$http", "$q", function ($http, $q) {
     this.get = function (typed) {
         return $http.get(catagoryURL + '/catagory?catagoryname='+typed);
     };
-    
+
+     this.getAllCatagory = function (typed) {
+        return $http.get(catagoryURL + '/allcatagory');
+    };
+
+     this.groupingAndSeq = function (obj) {
+        return $http.post(catagoryURL + '/groupingAndSeq?ids='+obj.ids+"");
+    };
 }]);
