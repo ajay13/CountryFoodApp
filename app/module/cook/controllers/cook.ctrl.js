@@ -3,9 +3,10 @@
 angular.module('com.module.cook')
     .controller('CookCtrl', CookCtrl);
 
-CookCtrl.$inject = ["$scope", "CookService", "CoreService"];
+CookCtrl.$inject = ["$scope", "CookService", "CoreService", "$rootScope"];
 
-function CookCtrl($scope, CookService, CoreService) {
+function CookCtrl($scope, CookService, CoreService,$rootScope) {
+
   var cook = this;
   cook.info =  {};
   cook.info.name = "";

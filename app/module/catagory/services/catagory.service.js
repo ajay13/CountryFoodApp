@@ -33,6 +33,6 @@ app.service('CatagoryService', ["$http", "$q", function ($http, $q) {
     };
 
      this.groupingAndSeq = function (obj) {
-        return $http.post(catagoryURL + '/groupingAndSeq?ids='+obj.ids+"");
+        return $http.post(catagoryURL + '/groupingAndSeq?ids='+obj.ids+"&groupName="+obj.groupName);
     };
 }]);

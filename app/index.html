@@ -38,7 +38,6 @@
         <script src="bowercomponents/jquery/dist/jquery.min.js"></script>
         <script src="js/jquery.multilevelpushmenu.min.js"></script>
         <script type="text/javascript" src="js/basichtml.js"></script>
-        <script src="app.js"></script>
 
 
       <script src="bowercomponents/esimakin-twbs-pagination/jquery.twbsPagination.min.js"></script> 
@@ -46,8 +45,15 @@
      <script src="bowercomponents/angularMultipleSelect/build/multiple-select.min.js"></script> 
       
 
+     <script src="app.js"></script>
       
       <!-- <script type="text/javascript" src="js/simple-autocomplete.js"></script> -->
+
+      <!-- login module-->
+<!--       <script src="module/login/login.routers.js"></script>
+      <script src="module/login/controllers/login.ctrl.js"></script>
+      <script src="module/login/services/login.service.js"></script>
+      <script src="module/login/views/login.html"></script>  -->
       
           <!-- user module-->
       <script src="module/user/user.routers.js"></script>
@@ -76,7 +82,6 @@
       <script src="module/menu/views/menu.html"></script> 
       <script src="module/menu/directive/menu.directive.js"></script> 
 
-
     <title>Country Food Admin</title>
   </head>
 
@@ -89,9 +94,9 @@
     </nav>
   </div> -->
 
-
-   <div>
-      <div id="menu" style="float: left;width: 20%;">
+<!--  ng-hide="isUser" -->
+   <div style="display: flex;">
+      <div id="menu">
             <nav>
                 <h2><i class="fa fa-reorder"></i>CMS Options</h2>
                 <ul>
@@ -107,9 +112,9 @@
                 </ul>   
             </nav>
     </div>
+<!-- ng-class="{{isUser ? 'col-xs-10' : 'col-xs-12' }}" -->
 
-
-    <div ui-view style="color: white; margin-top: 20px;" class="col-xs-10" > </div>
+    <div ui-view style="color: white; margin-top: 20px; width: 100%; margin-left: 10px; margin-right: 10px;"> </div>
    </div>
     
     <div id="info" class="row" >

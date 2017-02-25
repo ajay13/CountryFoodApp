@@ -141,7 +141,7 @@ $scope.optionsList = [];
    function showGroupAndSeq(catagories){
      angular.forEach(catagories, function(value, key) {
           if(value.groupName!=null)  {
-             value.name = value.name +" group-> "+value.groupName+" seq-> "+value.sequence;  
+             value.name = value.name +" [Group-> "+value.groupName+", Seq-> "+value.sequence+"]";  
           }
       });
    }
@@ -151,7 +151,7 @@ $scope.optionsList = [];
       //console.log(catagory.groupingAndSeq);
       
        CatagoryService.groupingAndSeq(catagory.groupingAndSeq).success(function (data, status, headers) {
-         
+            catagory.getAllCatagory();
         }).error(function (error) {
                 console.log("doneGroupingAndSequencing:" + error.message);
             });
