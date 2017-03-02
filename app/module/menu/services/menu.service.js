@@ -8,6 +8,10 @@ app.service('MenuService', ["$http", "$q", function ($http, $q) {
 
    // var menuURL = "http://countryfood.cfapps.io/cms/menu";
 
+    this.getMenuUnit = function () {
+        return $http.get(menuURL + '/getMenuUnit');
+    };
+
     this.addMenu = function (menu) {
         return $http.post(menuURL + '/add',menu);
     };

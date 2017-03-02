@@ -54,7 +54,18 @@
 							<td class="bold-text"><span>{{$index +1}}</span></td>
 							<td class="bold-text"><span ng-bind="menu1.itemName"></span></td>
 							<td class="bold-text"><span ng-bind="menu1.description"></span></td>
-							<td class="bold-text"><span ng-bind="menu1.price"></span></td>
+							<td class="bold-text">
+							                 <table>
+							                 	  <tbody>
+							                 	  	   <tr data-ng-repeat="unitPrice in menu1.cmsMenuPriceBeanList">
+							                 	  	   	  <td>
+							                 	  	   	  	 <span>{{unitPrice.unitName}}</span>
+							                 	  	   	  	 ---<span>{{unitPrice.price}}</span>
+							                 	  	   	  </td>
+							                 	  	   </tr>
+							                 	  </tbody>
+							                 </table>
+							</td>
 							<td class="bold-text" style="width: 10%;">
 							<span ng-if="menu1.menuImagePath.length>0">	
                              <img ng-src="data:image/JPEG;base64,{{menu1.image}}" style="width:100%;">
@@ -99,29 +110,33 @@
 							class="form-control" placeholder="Enter cook description."
 							ng-model="menu.addMenu.description">
 					</div>
-					<!-- <div class="form-group">
-						<label class="control-label">Price:</label> <input type="text"
-							class="form-control" placeholder="Enter price."
-							ng-model="menu.addMenu.price">
-					</div> -->
+					
 					<div class="form-group">
 					<label class="control-label">Unit:</label> 
 						<div data-toggle="buttons">
-				          <label class="btn btn-default btn-circle btn-lg">       
-				              <input ng-model="menu.addMenu.unit" type="radio" name="q1" value="1"><i class="glyphicon glyphicon-ok"></i>
+				          <label class="btn btn-default btn-circle btn-lg" ng-class="menu.addMenu.unit==1? 'active':''">       
+				              <input ng-model="menu.addMenu.unit" type="radio" name="q1" value="1" selected="true"><i class="glyphicon glyphicon-ok"></i>
 				          </label>
-				          <label class="btn btn-default btn-circle btn-lg">       
+				          <label class="btn btn-default btn-circle btn-lg" ng-class="menu.addMenu.unit==0? 'active':''">       
 				               <input ng-model="menu.addMenu.unit" type="radio" name="q1" value="0"><i class="glyphicon glyphicon-remove"></i>
 				          </label>
 				        </div>
 					</div>
 
                     <div class="form-group">
-						<div>
-                             <input type="file" file-model="myFile"  class="btn btn-default btn-file"/>
-                        </div>
-					</div>
-  
+                      <fieldset  data-ng-repeat="choice in choices">
+					      	<select  id="{{choice.id+'select'}}">
+							    <option 
+							            ng-repeat="menuUnit in menu.getMenuUnitList"
+							            value="{{menuUnit.unit}}" >
+							      {{menuUnit.unit}}
+							    </option>
+							</select>
+					      <input type="text" name="" placeholder="Enter price" id="{{choice.id+'input1'}}">
+					      <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
+					   </fieldset>
+					   <button class="addfields" ng-click="addNewChoice()">Add Unit</button>
+					</div> 
 
 					<div class="form-group">
 						<div>
@@ -188,13 +203,36 @@
 
 
 <style>
-#info {
-    height: 25px;
-    position: fixed;
-    bottom:0%;
-    width:100%;
-    background-color: whitesmoke;
-    opacity: 1;
+fieldset{
+    background: #FCFCFC;
+    padding: 16px;
+    border: 1px solid #D5D5D5;
+}
+.addfields{
+    margin: 10px 0;
+}
+
+#choicesDisplay {
+    padding: 10px;
+    background: rgb(227, 250, 227);
+    border: 1px solid rgb(171, 239, 171);
+    color: rgb(9, 56, 9);
+}
+.remove{
+    background: #C76868;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 21px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 9px;
+    vertical-align: top;
+    line-height: 100%;   
+}
+input[type="text"],
+select{
+    padding:5px;
 }
 
 </style>
