@@ -42,6 +42,7 @@ menu.deleteMenu = deleteMenu;
 menu.cleanAddMenu = cleanAddMenu;
 menu.getMenuUnit = getMenuUnit;
 menu.getPriceAndUnit  = getPriceAndUnit;
+menu.clearMenu = clearMenu;
 
 menu.searchOption = {};
 menu.searchOption.cookId = "";
@@ -62,6 +63,19 @@ menu.currentpage = 1;
 menu.getMenuUnitList = [];
 
 menu.getMenuUnit(); 
+
+function clearMenu(){
+  menu.selectedCookId  = "";
+  menu.selectedCatagoryId = "";
+  var elements = document.getElementsByName("autocomplete-type");
+  try{
+      angular.forEach(elements, function(element, key) {
+          element.value = "";
+      });
+  }catch(err){
+   console.log(err);
+  }
+}
 
 function getPriceAndUnit(){
 
@@ -150,6 +164,7 @@ function getMenu(){
 
         }).error(function (error) {
                 console.log("user:" + error.message);
+                menu.menuList = [];
             });
 }
 
@@ -169,14 +184,24 @@ function getMenu(){
         }).error(function (error) {
                 console.log("user:" + error.message);
             });
-         console.info(menu.addMenu)
+         console.info(menu.addMenu);
    };
 
 
     function editMenu(tempMenu){
+
         menu.editedMenu = {};
         var obj = angular.copy(tempMenu);
         menu.editedMenu = obj;
+        $scope.choices = [];
+        var id = 0;
+        angular.forEach(menu.editedMenu.cmsMenuPriceBeanList, function(value, key){
+             id++;
+             var priceId = "choice"+id+"input1";
+             $scope.addNewChoice();
+             ele = document.getElementById('choice'+id+'input1');
+             console.log(ele);
+         });
     }
 
      function update() {

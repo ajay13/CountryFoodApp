@@ -70,6 +70,11 @@
 	background-color: #295685;
 }
 
+.multilevelpushmenu_wrapper.selected  {
+	background-color: white;
+}
+
+
 .multilevelpushmenu_wrapper a {
 	display: block;
 	outline: none;
