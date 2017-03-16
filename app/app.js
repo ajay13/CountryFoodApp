@@ -5,7 +5,7 @@
                               'com.module.cook',
                               'com.module.menu',
                               'com.module.catagory',
-                              'oitozero.ngSweetAlert','autocomplete','multipleSelect']);
+                              'oitozero.ngSweetAlert','autocomplete','multipleSelect','uiSwitch']);
 
 
 /*app.config(['$httpProvider', function($httpProvider) {

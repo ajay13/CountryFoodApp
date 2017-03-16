@@ -42,6 +42,7 @@ function CatagoryCtrl($scope, CatagoryService, CoreService) {
 $scope.optionsList = [];
 
 
+
   function add() {
         CatagoryService.add(catagory.info).success(function (data, status, headers) {
             toastr.success("catagory successfully added.", '', {timeOut: 5000});

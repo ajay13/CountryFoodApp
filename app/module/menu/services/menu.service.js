@@ -4,9 +4,9 @@ var app = angular.module('com.module.menu');
 
 app.service('MenuService', ["$http", "$q", function ($http, $q) {
     
-    //var menuURL = "http://localhost:8080/SpringRestSecurityOauth/cms/menu";
+    var menuURL = "http://localhost:8080/SpringRestSecurityOauth/cms/menu";
 
-    var menuURL = "http://countryfood.cfapps.io/cms/menu";
+    //var menuURL = "http://countryfood.cfapps.io/cms/menu";
 
     this.getMenuUnit = function () {
         return $http.get(menuURL + '/getMenuUnit');
@@ -47,4 +47,19 @@ app.service('MenuService', ["$http", "$q", function ($http, $q) {
         return $http.post(menuURL + '/delete?id='+id);
     };
 
+    this.getAllMenu = function (cookId,specialityId) {
+        return $http.get(menuURL+ '/allmenu?cookId='+cookId+'&specialityId='+specialityId);
+    };
+ 
+   this.addSpeciality = function (specility) {
+        return $http.post(menuURL + '/addSpeciality',specility);
+    };
+
+    this.getCookSpeciality = function (cookId,speciality) {
+        return $http.get(menuURL+ '/getCookSpeciality?cookId='+cookId+'&speciality='+speciality);
+    };
+
+    this.deleteCookSpeciality = function (cookId,speciality) {
+        return $http.post(menuURL+ '/deleteCookSpeciality?cookId='+cookId+'&speciality='+speciality);
+    };
 }]);

@@ -4,8 +4,8 @@ var app = angular.module('com.module.user');
 
 app.service('UserService', ["$http", "$q", function ($http, $q) {
 
-    //var userURL = 'rest/user';
-    var userURL = 'https://countryfood.cfapps.io/';
+    var userURL = 'rest/user';
+    //var userURL = 'https://countryfood.cfapps.io/';
     
     this.add = function (user) {
         return $http.post(userURL + '/add',user);
