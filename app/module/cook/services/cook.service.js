@@ -4,11 +4,13 @@ var app = angular.module('com.module.cook');
 
 app.service('CookService', ["$http", "$q", function ($http, $q) {
     
-    var cookURL = "http://localhost:8080/SpringRestSecurityOauth/cms/cooks";
+   // var cookURL = "http://localhost:8080/SpringRestSecurityOauth/cms/cooks";
 
-    var otherUrl = "http://localhost:8080/SpringRestSecurityOauth/cms/other";
+   // var otherUrl = "http://localhost:8080/SpringRestSecurityOauth/cms/other";
 
-   // var cookURL = "http://countryfood.cfapps.io/cms/cooks";
+   var cookURL = "http://ec2-52-24-151-211.us-west-2.compute.amazonaws.com:8080/SpringRestSecurityOauth/cms/cooks";
+
+    var otherUrl = "http://ec2-52-24-151-211.us-west-2.compute.amazonaws.com:8080/SpringRestSecurityOauth/cms/other";
 
     this.add = function (cook) {
         return $http.post(cookURL + '/add',cook);
