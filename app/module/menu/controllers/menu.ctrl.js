@@ -22,6 +22,8 @@ $scope.choices = [];
 
 var menu = this;
 
+menu.sno = 0;
+
 menu.editedMenu = {};
 
 menu.cookInfo =  [];
@@ -158,6 +160,7 @@ function getMenu(){
                 onPageClick: function (event, page) {
                     menu.getMenu(page,menu.selectedCookId, menu.selectedCatagoryId);
                     menu.currentpage = page;
+                    menu.sno = menu.currentpage * 10 - 10;
                 }
             });
            } 
@@ -226,8 +229,15 @@ function getMenu(){
 
         CoreService.confirmation('Are you sure?', 'Delete cannot be undone.', function () {
             MenuService.delete(id).success(function (data, status, headers) {
-                menu.getMenu();
-                toastr.success("Menu successfully deleted.", '', {timeOut: 5000});
+              if(status==200){
+                   menu.getMenu();
+                   toastr.success("Menu successfully deleted.", '', {timeOut: 5000});
+                }else{
+                  if(status==206){
+                     CoreService.alertError("Could not delete","Menu mapped with cook speciality.");
+                  }
+                }
+                
             }).error(function (error) {
                     console.log("user:" + error.message);
                 });

@@ -4,9 +4,9 @@ var app = angular.module('com.module.menu');
 
 app.service('MenuService', ["$http", "$q", function ($http, $q) {
     
-    //var menuURL = "http://localhost:8080/SpringRestSecurityOauth/cms/menu";
+    var menuURL = "http://localhost:8080/SpringRestSecurityOauth/cms/menu";
 
-    var menuURL = "http://ec2-52-24-151-211.us-west-2.compute.amazonaws.com:8080/SpringRestSecurityOauth/cms/menu";
+   // var menuURL = "http://ec2-52-24-151-211.us-west-2.compute.amazonaws.com:8080/SpringRestSecurityOauth/cms/menu";
 
     this.getMenuUnit = function () {
         return $http.get(menuURL + '/getMenuUnit');

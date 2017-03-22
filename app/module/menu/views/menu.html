@@ -39,7 +39,6 @@
 
 
 		<div class="portlet-body"> 
-
 			<div style="margin-top: 10px;">
 				<table class="table table-bordered">
 					<thead>
@@ -54,7 +53,7 @@
 					</thead>
 					<tbody>
 						<tr data-ng-repeat="menu1 in menu.menuList">
-							<td class="bold-text"><span>{{$index +1}}</span></td>
+							<td class="bold-text"><span>{{menu.sno+$index +1}}</span></td>
 							<td class="bold-text"><span ng-bind="menu1.itemName"></span></td>
 							<td class="bold-text"><span ng-bind="menu1.description"></span></td>
 							<td class="bold-text">
@@ -106,12 +105,12 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label class="control-label">Item Name:</label> <input
-							type="text" class="form-control" placeholder="Enter Cook Name."
+							type="text" class="form-control" placeholder="Enter item Name."
 							ng-model="menu.addMenu.itemName">
 					</div>
 					<div class="form-group">
 						<label class="control-label">Description:</label> <input type="text"
-							class="form-control" placeholder="Enter cook description."
+							class="form-control" placeholder="Enter item description."
 							ng-model="menu.addMenu.description">
 					</div>
 
@@ -159,12 +158,12 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label class="control-label">Item Name:</label> <input
-							type="text" class="form-control" placeholder="Enter Cook Name."
+							type="text" class="form-control" placeholder="Enter item Name."
 							ng-model="menu.editedMenu.itemName" id="itemName">
 					</div>
 					<div class="form-group">
 						<label class="control-label">Description:</label> <input type="text"
-							class="form-control" placeholder="Enter cook description."
+							class="form-control" placeholder="Enter item description."
 							ng-model="menu.editedMenu.description">
 					</div>
 

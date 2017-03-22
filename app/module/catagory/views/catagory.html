@@ -36,7 +36,7 @@
 					</thead>
 					<tbody>
 						<tr data-ng-repeat="catagory1 in catagory.catagoryList">
-							<td class="bold-text"><span>{{$index +1}}</span></td>
+							<td class="bold-text"><span>{{catagory.sno+$index +1}}</span></td>
 							<td class="bold-text"><span ng-bind="catagory1.name"></span></td>
 							<td class="bold-text"><span ng-bind="catagory1.description"></span></td>					
 							<td align="center"><span> <a

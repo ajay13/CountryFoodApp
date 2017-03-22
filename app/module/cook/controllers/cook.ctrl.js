@@ -9,6 +9,8 @@ function CookCtrl($scope, CookService, CoreService,$rootScope,MenuService) {
 
   var cook = this;
 
+  cook.sno = 0;
+
   cook.myFile = {};
 
   cook.info =  {};
@@ -110,7 +112,7 @@ function CookCtrl($scope, CookService, CoreService,$rootScope,MenuService) {
             });*/
 
             MenuService.addSpeciality(cook.specility).success(function (data1, status1, headers1) {
-             
+                          toastr.success("Cook speciality updated.", '', {timeOut: 5000});   
         }).error(function (error) {
                 console.log("updateSpeciality:" + error.message);
             });
@@ -118,7 +120,8 @@ function CookCtrl($scope, CookService, CoreService,$rootScope,MenuService) {
 
   function getMenuForSpeciality(){
      cook.getAllMenu(cook.specility.cookId,cook.specility.speciality);
-     $scope.menuSelectedList = [];     
+     $scope.menuSelectedList = [];   
+    $scope.menuOptionsList = [];  
      cook.getCookSpeciality(cook.specility.cookId,cook.specility.speciality);
   }
 
@@ -197,6 +200,7 @@ function CookCtrl($scope, CookService, CoreService,$rootScope,MenuService) {
                 onPageClick: function (event, page) {
                     cook.get(page);
                     cook.currentpage = page;
+                    cook.sno = cook.currentpage * 10 - 10;
                 }
             });
             }
@@ -231,8 +235,14 @@ function CookCtrl($scope, CookService, CoreService,$rootScope,MenuService) {
 
         CoreService.confirmation('Are you sure?', 'Delete cannot be undone.', function () {
             CookService.delete(id).success(function (data, status, headers) {
-                cook.get(cook.currentpage);
-                toastr.success("User successfully deleted.", '', {timeOut: 5000});
+              if(status==200){
+                   cook.get(cook.currentpage);
+                   toastr.success("User successfully deleted.", '', {timeOut: 5000});
+                }else{
+                  if(status==206){
+                     CoreService.alertError("Could not delete","Cook mapped with menus.");
+                  }
+                }
             }).error(function (error) {
                     console.log("user:" + error.message);
                 });

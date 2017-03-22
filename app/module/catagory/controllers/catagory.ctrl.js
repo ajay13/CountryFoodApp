@@ -7,6 +7,9 @@ CatagoryCtrl.$inject = ["$scope", "CatagoryService", "CoreService"];
 
 function CatagoryCtrl($scope, CatagoryService, CoreService) {
   var catagory = this;
+
+  catagory.sno = 0;
+
   catagory.info =  {};
   catagory.info.name = "";
   catagory.info.description = "";
@@ -68,6 +71,7 @@ $scope.optionsList = [];
                 onPageClick: function (event, page) {
                     catagory.get(page);
                     catagory.currentpage = page;
+                    catagory.sno = catagory.currentpage * 10 - 10;
                 }
             });
            } 
@@ -91,8 +95,14 @@ $scope.optionsList = [];
 
         CoreService.confirmation('Are you sure?', 'Delete cannot be undone.', function () {
             CatagoryService.delete(id).success(function (data, status, headers) {
-                catagory.get(catagory.currentpage);
-                toastr.success("User successfully deleted.", '', {timeOut: 5000});
+                if(status==200){
+                  catagory.get(catagory.currentpage);
+                  toastr.success("User successfully deleted."+status, '', {timeOut: 5000});
+                }else{
+                  if(status==206){
+                     CoreService.alertError("Could not delete","Catagory mapped with menus.");
+                  }
+                }
             }).error(function (error) {
                     console.log("user:" + error.message);
                 });
