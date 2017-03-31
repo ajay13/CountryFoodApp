@@ -47,8 +47,8 @@
 							<td class="bold-text"><span ng-bind="cook1.mobileno"></span></td>
 							<td class="bold-text"><span ng-bind="cook1.address"></span></td>
 							<td class="bold-text" style="width: 10%;">
-							<span ng-if="cook1.imagePath.length>0">	
-                             <img ng-src="data:image/JPEG;base64,{{cook1.image}}" style="width:100%;">
+							<span ng-if="cook1.imagePath.length>0">
+                             <img ng-src="{{cook1.imageURL}}" style="width:100%;">
 							</span></td>
 							<td align="center"><span> <a
 									href="#"

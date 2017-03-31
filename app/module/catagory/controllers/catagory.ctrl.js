@@ -38,7 +38,7 @@ function CatagoryCtrl($scope, CatagoryService, CoreService) {
   catagory.clearGroupingAndSeq = clearGroupingAndSeq;
 
   catagory.get(catagory.currentpage);
-  catagory.getAllCatagory();
+  //catagory.getAllCatagory();
 
 
 

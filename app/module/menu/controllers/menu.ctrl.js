@@ -10,9 +10,14 @@ function MenuCtrl($scope, CookService, CatagoryService,MenuService,CoreService,f
 
 $scope.choices = [];
   
-  $scope.addNewChoice = function() {
-    var newItemNo = $scope.choices.length+1;
-    $scope.choices.push({'id':'choice'+newItemNo});
+  $scope.addNewChoice = function(id1,unit1,amount1) {
+  //  var newItemNo = $scope.choices.length+1;
+    $scope.choices.push(
+          {
+             'id': id1,
+             'unitName':unit1,
+             'price':amount1
+          });
   };
     
   $scope.removeChoice = function() {
@@ -21,6 +26,8 @@ $scope.choices = [];
   };
 
 var menu = this;
+
+menu.editLoadObj = {};
 
 menu.sno = 0;
 
@@ -45,6 +52,7 @@ menu.cleanAddMenu = cleanAddMenu;
 menu.getMenuUnit = getMenuUnit;
 menu.getPriceAndUnit  = getPriceAndUnit;
 menu.clearMenu = clearMenu;
+menu.loadData = loadData;
 
 menu.searchOption = {};
 menu.searchOption.cookId = "";
@@ -65,6 +73,10 @@ menu.currentpage = 1;
 menu.getMenuUnitList = [];
 
 menu.getMenuUnit(); 
+
+function loadData(){
+  menu.editedMenu = menu.editLoadObj;
+}
 
 function clearMenu(){
   menu.selectedCookId  = "";
@@ -174,7 +186,8 @@ function getMenu(){
  function add() {
      menu.addMenu.cooksId = menu.selectedCookId;
      menu.addMenu.menuCatagoryId = menu.selectedCatagoryId;
-     menu.addMenu.cmsMenuPriceBeanList = menu.getPriceAndUnit();
+   //  menu.addMenu.cmsMenuPriceBeanList = menu.getPriceAndUnit();
+    menu.addMenu.cmsMenuPriceBeanList = $scope.choices;
 
         var file = $scope.myFile;
         MenuService.addMenu(menu.addMenu).success(function (data, status, headers) {
@@ -187,7 +200,12 @@ function getMenu(){
         }).error(function (error) {
                 console.log("user:" + error.message);
             });
-         console.info(menu.addMenu);
+         //console.info(menu.addMenu);
+     
+     /* angular.forEach($scope.choices, function(element, key) {
+          console.log(element);
+      });*/
+
    };
 
 
@@ -196,21 +214,25 @@ function getMenu(){
         menu.editedMenu = {};
         var obj = angular.copy(tempMenu);
         menu.editedMenu = obj;
-        $scope.choices = [];
-        var id = 0;
-        angular.forEach(menu.editedMenu.cmsMenuPriceBeanList, function(value, key){
-             id++;
-             var priceId = "choice"+id+"input1";
-             $scope.addNewChoice();
-             ele = document.getElementById('choice'+id+'input1');
-             console.log(ele);
-         });
+
+        $scope.choices = [];  
+ 
+       //$scope.choices = menu.editLoadObj.cmsMenuPriceBeanList;
+
+       angular.forEach(menu.editedMenu.cmsMenuPriceBeanList, function(element, key) {
+         $scope.addNewChoice(element.id,element.unitName,element.price);
+      });
+
+       // menu.loadData();
     }
 
      function update() {
 
      menu.editedMenu.cooksId = menu.selectedCookId;
      menu.editedMenu.menuCatagoryId = menu.selectedCatagoryId;
+     menu.editedMenu.cmsMenuPriceBeanList = $scope.choices;
+
+     console.log(menu.editedMenu);
 
         var file = $scope.myFile;
 

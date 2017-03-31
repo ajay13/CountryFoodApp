@@ -72,14 +72,14 @@
 							</td>
 							<td class="bold-text" style="width: 10%;">
 							<span ng-if="menu1.menuImagePath.length>0">	
-                             <img ng-src="data:image/JPEG;base64,{{menu1.image}}" style="width:100%;">
+                             <img ng-src="{{menu1.imageURL}}" style="width:100%;">
 							</span></td>
-							<td align="center"><!-- <span> <a
+							<td align="center"><span> <a
 									href=""
 									ng-click="menu.editMenu(menu1);"
 									data-toggle="modal" data-target="#editmodel"> <i
 										class="fa fa-edit"></i></a>
-							</span>  --><span> <a href=""
+							</span> <span> <a href=""
 									ng-click="menu.deleteMenu(menu1.id);"> <i
 										class="fa fa-times" aria-hidden="true"></i></a>
 							</span></td>
@@ -115,18 +115,18 @@
 					</div>
 
                     <div class="form-group">
-                      <fieldset  data-ng-repeat="choice in choices">
-					      	<select  id="{{choice.id+'select'}}">
+                      <div  data-ng-repeat="choice in choices">
+					      	<select  id="{{choice.id+'select'}}" ng-model="choice.unitName">
 							    <option 
 							            ng-repeat="menuUnit in menu.getMenuUnitList"
 							            value="{{menuUnit.unit}}" >
 							      {{menuUnit.unit}}
 							    </option>
 							</select>
-					      <input type="text" name="" placeholder="Enter price" id="{{choice.id+'input1'}}">
+					      <input type="text" name="" ng-model="choice.price" placeholder="Enter price" id="{{choice.id+'input1'}}">
 					      <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
-					   </fieldset>
-					   <button class="addfields" ng-click="addNewChoice()">Add Unit</button>
+					   </div>
+					   <button class="addfields" ng-click="addNewChoice('','Half','')">Add Unit</button>
 					</div> 
 
 					<div class="form-group">
@@ -168,17 +168,17 @@
 					</div>
 
                     <div class="form-group">
-                      <fieldset  data-ng-repeat="choice in choices">
-					      	<select  id="{{choice.id+'select'}}">
+                      <div  data-ng-repeat="choice in choices">
+					      	<select  id="{{choice.id+'select'}}" ng-model="choice.unitName">
 							    <option 
 							            ng-repeat="menuUnit in menu.getMenuUnitList"
 							            value="{{menuUnit.unit}}" >
 							      {{menuUnit.unit}}
 							    </option>
 							</select>
-					      <input type="text" name="" placeholder="Enter price" id="{{choice.id+'input1'}}">
+					      <input type="text" name="" ng-model="choice.price" placeholder="Enter price" id="{{choice.id+'input1'}}">
 					      <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
-					   </fieldset>
+					   </div>
 					   <button class="addfields" ng-click="addNewChoice()">Add Unit</button>
 					</div> 
 
