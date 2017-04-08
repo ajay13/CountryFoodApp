@@ -2,9 +2,9 @@
 
 var app = angular.module('com.module.menu');
 
-app.service('MenuService', ["$http", "$q", function ($http, $q) {
+app.service('MenuService', ["$http", "$q", "AppService",function ($http, $q,AppService) {
     
-    var menuURL = "http://localhost:8080/SpringRestSecurityOauth/cms/menu";
+    var menuURL = AppService.getWebUrl()+"/cms/menu";
 
    // var menuURL = "http://ec2-52-24-151-211.us-west-2.compute.amazonaws.com:8080/SpringRestSecurityOauth/cms/menu";
 

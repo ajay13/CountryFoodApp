@@ -2,11 +2,11 @@
 
 var app = angular.module('com.module.catagory');
 
-app.service('CatagoryService', ["$http", "$q", function ($http, $q) {
-
-  var catagoryURL = "http://localhost:8080/SpringRestSecurityOauth/cms/menucatagory";
+app.service('CatagoryService', ["$http", "$q", "AppService",function ($http, $q,AppService) {
 
     //var catagoryURL = "http://ec2-52-24-151-211.us-west-2.compute.amazonaws.com:8080/SpringRestSecurityOauth/cms/menucatagory";
+
+    var catagoryURL = AppService.getWebUrl()+"/cms/menucatagory"
 
     this.add = function (catagory) {
         return $http.post(catagoryURL + '/add',catagory);

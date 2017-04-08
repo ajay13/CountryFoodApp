@@ -2,11 +2,11 @@
 
 var app = angular.module('com.module.cook');
 
-app.service('CookService', ["$http", "$q", function ($http, $q) {
+app.service('CookService', ["$http", "$q","AppService", function ($http, $q,AppService) {
     
-    var cookURL = "http://localhost:8080/SpringRestSecurityOauth/cms/cooks";
+    var cookURL = AppService.getWebUrl()+"/cms/cooks";
 
-    var otherUrl = "http://localhost:8080/SpringRestSecurityOauth/cms/other";
+    var otherUrl =  AppService.getWebUrl()+"/cms/other";
 
   // var cookURL = "http://ec2-52-24-151-211.us-west-2.compute.amazonaws.com:8080/SpringRestSecurityOauth/cms/cooks";
 
