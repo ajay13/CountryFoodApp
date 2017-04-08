@@ -159,6 +159,7 @@ function searchCatagory(typed) {
 function getMenu(){
   console.log(menu.currentpage+","+menu.selectedCookId+","+menu.selectedCatagoryId);
   $scope.paggination = [];
+   menu.menuList = [];
    MenuService.getMenuList(menu.currentpage,menu.selectedCookId, menu.selectedCatagoryId).success(function (data, status, headers) {
             menu.menuList  = data.cmsMenuBeanList;
             $scope.paggination = data.count;
@@ -170,9 +171,10 @@ function getMenu(){
                 totalPages: $scope.paggination,
                 visiblePages: $scope.paggination,
                 onPageClick: function (event, page) {
-                    menu.getMenu(page,menu.selectedCookId, menu.selectedCatagoryId);
+                   // menu.getMenu(page,menu.selectedCookId, menu.selectedCatagoryId);
                     menu.currentpage = page;
                     menu.sno = menu.currentpage * 10 - 10;
+                     menu.getMenu();
                 }
             });
            } 

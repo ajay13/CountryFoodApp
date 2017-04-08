@@ -187,6 +187,7 @@ function CookCtrl($scope, CookService, CoreService,$rootScope,MenuService) {
 
    function get(pageno) {
         $scope.paggination = [];
+        cook.cookList = [];
         CookService.getCookList(pageno).success(function (data, status, headers) {
 
             cook.cookList = data.cmsCooksBeanList;

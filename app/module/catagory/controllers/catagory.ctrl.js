@@ -59,6 +59,7 @@ $scope.optionsList = [];
 
    function get(pageno) {
         $scope.paggination = [];
+        catagory.catagoryList = [];
         CatagoryService.getCatagoryList(pageno).success(function (data, status, headers) {
             console.log(data.cmsCatagoryBeanList);
             catagory.catagoryList = data.cmsCatagoryBeanList;
